@@ -24,7 +24,7 @@ return [
      *
      * For reference, see https://defstudio.github.io/telegraph/webhooks/overview
      */
-    'webhook_handler' => EmptyWebhookHandler::class,
+    'webhook_handler' => MyWebhookHandler::class,
 
     /*
      * Sets a custom domain when registering a webhook. This will allow a local telegram bot api server
