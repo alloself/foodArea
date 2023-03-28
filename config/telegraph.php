@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Webhooks\MyWebhookHandler;
+use DefStudio\Telegraph\Handlers\EmptyWebhookHandler;
 use DefStudio\Telegraph\Telegraph;
 
 return [
@@ -14,6 +15,7 @@ return [
      * Sets Telegraph messages default parse mode
      * allowed values: html|markdown|MarkdownV2
      */
+		
     'default_parse_mode' => Telegraph::PARSE_HTML,
 
     /*
@@ -22,7 +24,7 @@ return [
      *
      * For reference, see https://defstudio.github.io/telegraph/webhooks/overview
      */
-    'webhook_handler' => MyWebhookHandler::class,
+    'webhook_handler' => EmptyWebhookHandler::class,
 
     /*
      * Sets a custom domain when registering a webhook. This will allow a local telegram bot api server
