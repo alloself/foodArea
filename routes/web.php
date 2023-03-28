@@ -2,7 +2,7 @@
 
 use DefStudio\Telegraph\Facades\Telegraph;
 use Illuminate\Support\Facades\Route;
-use DefStudio\Telegraph\Models\TelegraphChat;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,14 @@ use DefStudio\Telegraph\Models\TelegraphChat;
 */
 
 Route::get('/', function () {
-    Telegraph::botInfo()->send();
-    return view('welcome');
+
+	Telegraph::registerBotCommands([
+		'hi' => 'hi',
+		'start' => 'начать',
+		'settings' => 'настройки аккаунта',
+		'previous' => 'предыдущий заказ',
+		'help' => 'обратная связь',
+	])->send();
+
+	return view('welcome');
 });
