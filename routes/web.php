@@ -1,8 +1,10 @@
 <?php
 
 use DefStudio\Telegraph\Facades\Telegraph;
+use DefStudio\Telegraph\Models\TelegraphBot;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use DefStudio\Telegraph\Models\TelegraphChat;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,23 @@ Route::get('/', function () {
 		'previous' => 'предыдущий заказ',
 		'help' => 'обратная связь',
 	])->send();
+
+
+	$chat = TelegraphChat::find(1);
+
+	// this will use the default parsing method set in config/telegraph.php
+	$chat->message('hello')->send();
+
+	$chat->html("<b>hello</b>\n\nI'm a bot!")->send();
+
+	$chat->markdown('*hello*')->send();
 	Telegraph::message('test')->dd();
 	Log::alert(Telegraph::chatMemberCount()->send());
-	
+	TelegraphBot::all()->map(function ($bot){
+		$bot->registerWebhook()->send();
+	});
+
+
 
 	return view('welcome');
 });
