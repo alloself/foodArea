@@ -36,7 +36,6 @@ Route::get('/', function () {
 	$chat->html("<b>hello</b>\n\nI'm a bot!")->send();
 
 	$chat->markdown('*hello*')->send();
-	Telegraph::message('test')->dd();
 	Log::alert(Telegraph::chatMemberCount()->send());
 	TelegraphBot::all()->map(function ($bot){
 		$bot->registerWebhook()->send();
