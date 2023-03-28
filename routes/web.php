@@ -40,10 +40,7 @@ Route::get('/', function () {
 	TelegraphBot::all()->map(function ($bot){
 		$bot->registerWebhook()->send();
 	});
-	Http::post('https://api.telegram.org/bot6185228090:AAFSpvou7vqC0wMF1dfit8ps_bXWP2eb1Y0/sendMessage',[
-		'chat_id' => 81630909,
-		'text' => 'Hello'
-	]);
+	Http::post('https://api.telegram.org/bot6185228090:AAFSpvou7vqC0wMF1dfit8ps_bXWP2eb1Y0/getMe');
 
 
 
