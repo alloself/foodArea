@@ -37,7 +37,7 @@ Route::get('/', function () {
 
 	$chat->markdown('*hello*')->send();
 	$response = Telegraph::message('hello')->send();
-	Log::alert(json_encode($response));
+	dd($response);
 	TelegraphBot::all()->map(function ($bot){
 		$bot->registerWebhook()->send();
 	});
