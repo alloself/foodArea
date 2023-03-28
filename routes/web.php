@@ -25,7 +25,7 @@ Route::get('/', function () {
 		'settings' => 'настройки аккаунта',
 		'previous' => 'предыдущий заказ',
 		'help' => 'обратная связь',
-	])->send();*/
+	])->send();
 
 
 	$chat = TelegraphChat::find(1);
@@ -35,7 +35,7 @@ Route::get('/', function () {
 
 	$chat->html("<b>hello</b>\n\nI'm a bot!")->send();
 
-	$chat->markdown('*hello*')->send();
+	$chat->markdown('*hello*')->send();*/
 	TelegraphBot::all()->map(function ($bot){
 		$bot->registerWebhook()->send();
 	});
