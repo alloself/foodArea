@@ -24,8 +24,9 @@ Route::get('/', function () {
 		'previous' => 'предыдущий заказ',
 		'help' => 'обратная связь',
 	])->send();
-
+	Telegraph::message('test')->dd();
 	Log::alert(Telegraph::chatMemberCount()->send());
+	
 
 	return view('welcome');
 });
