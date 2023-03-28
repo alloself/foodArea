@@ -2,10 +2,8 @@
 
 use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Models\TelegraphBot;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use DefStudio\Telegraph\Models\TelegraphChat;
-use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +18,14 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
 
+	/*
 	Telegraph::registerBotCommands([
 		'hi' => 'hi',
 		'start' => 'начать',
 		'settings' => 'настройки аккаунта',
 		'previous' => 'предыдущий заказ',
 		'help' => 'обратная связь',
-	])->send();
+	])->send();*/
 
 
 	$chat = TelegraphChat::find(1);
@@ -40,8 +39,6 @@ Route::get('/', function () {
 	TelegraphBot::all()->map(function ($bot){
 		$bot->registerWebhook()->send();
 	});
-	Http::post('https://api.telegram.org/bot6185228090:AAFSpvou7vqC0wMF1dfit8ps_bXWP2eb1Y0/getMe');
-
 
 
 	return view('welcome');
