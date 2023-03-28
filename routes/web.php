@@ -1,5 +1,6 @@
 <?php
 
+use DefStudio\Telegraph\Enums\ChatActions;
 use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Models\TelegraphBot;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,8 @@ Route::get('/', function () {
 	$chat->html("<b>hello</b>\n\nI'm a bot!")->send();
 
 	$chat->markdown('*hello*')->send();*/
-	TelegraphBot::all()->map(function ($bot){
-		$bot->registerWebhook()->send();
-	});
+	Telegraph::chatAction(ChatActions::TYPING)->send();
+
 
 
 	return view('welcome');
