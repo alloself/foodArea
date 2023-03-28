@@ -1,6 +1,7 @@
 <?php
 
 use DefStudio\Telegraph\Facades\Telegraph;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 		'previous' => 'предыдущий заказ',
 		'help' => 'обратная связь',
 	])->send();
+
+	Log::alert(Telegraph::chatMemberCount()->send());
 
 	return view('welcome');
 });
