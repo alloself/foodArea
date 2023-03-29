@@ -13,9 +13,6 @@ class MyWebhookHandler extends WebhookHandler
 	public function start()
 	{
 
-		$this->chat->message('hello world')->keyboard(function (Keyboard $keyboard) {
-			return $keyboard
-				->button('foo');
-		})->send();
+		$this->chat->message('hello world')->send();
 	}
 }
