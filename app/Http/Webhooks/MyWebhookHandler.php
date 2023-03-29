@@ -25,5 +25,6 @@ class MyWebhookHandler extends WebhookHandler
 	public function start()
 	{
 		$this->chat->message('Главное меню')->replyKeyboard($this->mainMenuReplyKeyboard)->send();
+		$this->reply("Notification dismissed");
 	}
 }
