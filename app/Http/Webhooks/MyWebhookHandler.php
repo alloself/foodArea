@@ -20,9 +20,14 @@ class MyWebhookHandler extends WebhookHandler
 			ReplyButton::make('⚙️ Настройки'),
 		])->oneTime())->send();
 	}
-	
 	protected function handleChatMessage(Stringable $text): void
 	{
-		$this->chat->html("Received: $text")->send();
+
+		switch ($text) {
+			case '⚙️ Настройки': {
+					$this->chat->html("Received: $text")->send();
+					break;
+				}
+		}
 	}
 }
