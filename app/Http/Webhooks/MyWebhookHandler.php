@@ -33,6 +33,11 @@ class MyWebhookHandler extends WebhookHandler
 				Button::make('⚙️ Настройки')->action('delete')->param('id', '42'),
 			]))->send();
 		}
+		if ($text == '🌐 Поделиться') {
+			$this->chat->html("🌐 Поделиться\n\nВы можете поделиться нашим ботом со своими друзьями, или в Вашем канале:")->keyboard(Keyboard::make()->row([
+				Button::make('🌐 Поделиться ботом')->action('delete')->param('id', '42'),
+			]))->send();
+		}
 
 		/*
 		->keyboard(Keyboard::make()->buttons([
