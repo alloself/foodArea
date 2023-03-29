@@ -11,8 +11,7 @@ class MyWebhookHandler extends WebhookHandler
 {
 	public function start()
 	{
-		$this->chat->message("Главное меню")->send();
-		$this->chat->replyKeyboard(function (Keyboard $keyboard) {
+		$this->chat->message("Главное меню")->replyKeyboard(function (Keyboard $keyboard) {
 			return $keyboard
 				->button('foo')->requestPoll()
 				->button('bar')->requestQuiz()
