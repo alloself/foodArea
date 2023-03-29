@@ -11,11 +11,12 @@ class MyWebhookHandler extends WebhookHandler
 {
 	public function start()
 	{
-		$this->chat->message("Главное меню")->keyboard(Keyboard::make()->buttons([
-			Button::make('Delete')->action('delete')->param('id', '42'),
-			Button::make('open')->url('https://test.it'),
-			Button::make('Web App')->webApp('https://web-app.test.it'),
-			Button::make('Login Url')->loginUrl('https://loginUrl.test.it'),
-		]))->send();
+		$this->chat->message("Главное меню")->keyboard(function (Keyboard $keyboard) {
+			return $keyboard
+				->button('Delete')->action('delete')->param('id', '42')
+				->button('open')->url('https://test.it')
+				->button('Web App')->webApp('https://web-app.test.it')
+				->button('Login Url')->loginUrl('https://loginUrl.test.it');
+		})->send();
 	}
 }
