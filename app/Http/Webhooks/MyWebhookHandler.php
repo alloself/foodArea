@@ -11,10 +11,6 @@ use DefStudio\Telegraph\Keyboard\Keyboard;
 
 class MyWebhookHandler extends WebhookHandler
 {
-
-
-
-
 	public function start()
 	{
 
