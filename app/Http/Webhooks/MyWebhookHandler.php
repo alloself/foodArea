@@ -3,21 +3,19 @@
 
 namespace App\Http\Webhooks;
 
-use DefStudio\Telegraph\DTO\User;
 use \DefStudio\Telegraph\Handlers\WebhookHandler;
-use Illuminate\Support\Facades\Log;
+use DefStudio\Telegraph\Keyboard\Button;
+use DefStudio\Telegraph\Keyboard\Keyboard;
 
 class MyWebhookHandler extends WebhookHandler
 {
-	protected function handleChatMemberJoined(User $member): void
-	{
-			Log::debug(123);
-      $this->chat->html("Welcome {$member->firstName()}")->send();
-	}
-
 	public function start()
 	{
-			$userFirstName = $this->message->from()->firstName();
-			$this->chat->message("Welcome $userFirstName")->send();
+		$this->chat->message("Главное меню")->keyboard(Keyboard::make()->buttons([
+			Button::make('Delete')->action('delete')->param('id', '42'),
+			Button::make('open')->url('https://test.it'),
+			Button::make('Web App')->webApp('https://web-app.test.it'),
+			Button::make('Login Url')->loginUrl('https://loginUrl.test.it'),
+		]))->send();
 	}
 }
