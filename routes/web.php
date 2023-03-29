@@ -29,7 +29,7 @@ Route::get('/', function () {
 	])->send();
 
 
-	TelegraphChat::all()->foreach(function ($item) {
+	TelegraphChat::all()->each(function ($item) {
 		$item->html("<b>hello</b>\n\nI'm a bot!")->send();
 	});
 	Telegraph::chatAction(ChatActions::TYPING)->send();
