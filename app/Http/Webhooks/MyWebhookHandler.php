@@ -13,16 +13,11 @@ class MyWebhookHandler extends WebhookHandler
 	public function start()
 	{
 
-		$keyboard = ReplyKeyboard::make()
-			->row([
-				ReplyButton::make('Send Contact')->requestContact(),
-				ReplyButton::make('Send Location')->requestLocation(),
-			])
-			->row([
-				ReplyButton::make('Quiz')->requestQuiz(),
-			]);
-
-		$this->chat->message('hello world')
-			->replyKeyboard($keyboard)->send();
+		$this->chat->message('hello world')->keyboard(function (Keyboard $keyboard) {
+			return $keyboard
+				->button('foo')->requestPoll()
+				->button('bar')->requestQuiz()
+				->button('baz')->webApp('https://webapp.dev');
+		})->send();
 	}
 }
