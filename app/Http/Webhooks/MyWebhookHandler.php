@@ -15,9 +15,7 @@ class MyWebhookHandler extends WebhookHandler
 
 		$this->chat->message('hello world')->keyboard(function (Keyboard $keyboard) {
 			return $keyboard
-				->button('foo')->requestPoll()
-				->button('bar')->requestQuiz()
-				->button('baz')->webApp('https://webapp.dev');
+				->button('foo');
 		})->send();
 	}
 }
