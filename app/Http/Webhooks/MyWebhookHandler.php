@@ -39,6 +39,34 @@ class MyWebhookHandler extends WebhookHandler
 			]))->send();
 		}
 
+		if ($text == '☕️ Кофейни') {
+			$this->chat->removeReplyKeyboard()->send();
+			$this->chat->replyKeyboard(ReplyKeyboard::make()->buttons([
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+				ReplyButton::make('📍 1-ая Красноармейская, 15'),
+		 ]))->send();
+		}
+
 		/*
 		->keyboard(Keyboard::make()->buttons([
 					Button::make('Delete')->action('delete')->param('id', '42'),
