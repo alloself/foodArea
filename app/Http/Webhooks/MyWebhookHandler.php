@@ -12,18 +12,17 @@ use DefStudio\Telegraph\Keyboard\Keyboard;
 class MyWebhookHandler extends WebhookHandler
 {
 
-	public $mainMenuReplyKeyboard = ReplyKeyboard::make()->row([
-		ReplyButton::make('☕️ Кофейни')->requestPoll(),
-	])->row([
-		ReplyButton::make('🌐 Поделиться')->requestQuiz(),
-		ReplyButton::make('⚙️ Настройки')->webApp('https://webapp.dev'),
-	]);
-
 
 
 
 	public function start()
 	{
-		$this->chat->message('Главное меню')->replyKeyboard($this->mainMenuReplyKeyboard)->send();
+
+		$this->chat->message('Главное меню')->replyKeyboard(ReplyKeyboard::make()->row([
+			ReplyButton::make('☕️ Кофейни')->requestPoll(),
+		])->row([
+			ReplyButton::make('🌐 Поделиться')->requestQuiz(),
+			ReplyButton::make('⚙️ Настройки')->webApp('https://webapp.dev'),
+		]))->send();
 	}
 }
