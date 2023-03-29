@@ -40,7 +40,6 @@ class MyWebhookHandler extends WebhookHandler
 		}
 
 		if ($text == '☕️ Кофейни') {
-			$this->chat->message('')->removeReplyKeyboard()->send();
 			$this->chat->replyKeyboard(ReplyKeyboard::make()->buttons([
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
