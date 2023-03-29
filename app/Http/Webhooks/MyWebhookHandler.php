@@ -28,10 +28,10 @@ class MyWebhookHandler extends WebhookHandler
 		switch ($text) {
 			case '⚙️ Настройки': {
 					$this->chat->html("⚙️ Настройки\n\nЗдесь можете настроить Ваш аккаунт или посмотреть статистику покупок:")->keyboard(Keyboard::make()->buttons([
-						Button::make('Delete')->action('delete')->param('id', '42'),
-						Button::make('open')->url('https://test.it'),
-						Button::make('Web App')->webApp('https://web-app.test.it'),
-						Button::make('Login Url')->loginUrl('https://loginUrl.test.it'),
+						Button::make('Delete'),
+						Button::make('open'),
+						Button::make('Web App'),
+						Button::make('Login Url'),
 					]))->send();
 					break;
 				}
