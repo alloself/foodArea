@@ -19,7 +19,7 @@ use DefStudio\Telegraph\Models\TelegraphChat;
 
 Route::get('/', function () {
 
-	/*
+
 	Telegraph::registerBotCommands([
 		'hi' => 'hi',
 		'start' => 'начать',
@@ -29,14 +29,9 @@ Route::get('/', function () {
 	])->send();
 
 
-	$chat = TelegraphChat::find(1);
-
-	// this will use the default parsing method set in config/telegraph.php
-	$chat->message('hello')->send();
-
-	$chat->html("<b>hello</b>\n\nI'm a bot!")->send();
-
-	$chat->markdown('*hello*')->send();*/
+	TelegraphChat::all()->foreach(function ($item) {
+		$item->html("<b>hello</b>\n\nI'm a bot!")->send();
+	});
 	Telegraph::chatAction(ChatActions::TYPING)->send();
 
 
