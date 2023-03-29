@@ -24,5 +24,6 @@ class MyWebhookHandler extends WebhookHandler
 			ReplyButton::make('🌐 Поделиться')->requestQuiz(),
 			ReplyButton::make('⚙️ Настройки')->webApp('https://webapp.dev'),
 		]))->send();
+		$this->reply("Notification dismissed");
 	}
 }
