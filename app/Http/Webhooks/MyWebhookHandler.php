@@ -15,11 +15,10 @@ class MyWebhookHandler extends WebhookHandler
 	{
 
 		$this->chat->message('Главное меню')->replyKeyboard(ReplyKeyboard::make()->row([
-			ReplyButton::make('☕️ Кофейни')->requestPoll(),
+			ReplyButton::make('☕️ Кофейни'),
 		])->row([
-			ReplyButton::make('🌐 Поделиться')->requestQuiz(),
-			ReplyButton::make('⚙️ Настройки')->webApp('https://webapp.dev'),
-		]))->send();
-		$this->reply("Notification dismissed");
+			ReplyButton::make('🌐 Поделиться'),
+			ReplyButton::make('⚙️ Настройки'),
+		])->oneTime())->send();
 	}
 }
