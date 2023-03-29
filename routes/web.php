@@ -21,20 +21,11 @@ Route::get('/', function () {
 
 
 	Telegraph::registerBotCommands([
-		'hi' => 'hi',
 		'start' => 'начать',
 		'settings' => 'настройки аккаунта',
 		'previous' => 'предыдущий заказ',
 		'help' => 'обратная связь',
 	])->send();
-
-
-	TelegraphChat::all()->each(function ($item) {
-		$item->html("<b>hello</b>\n\nI'm a bot!")->send();
-	});
-	Telegraph::chatAction(ChatActions::TYPING)->send();
-
-
 
 	return view('welcome');
 });
