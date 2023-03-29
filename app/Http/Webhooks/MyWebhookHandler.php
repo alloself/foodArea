@@ -20,7 +20,7 @@ class MyWebhookHandler extends WebhookHandler
 		])->row([
 			ReplyButton::make('🌐 Поделиться'),
 			ReplyButton::make('⚙️ Настройки'),
-		])->oneTime())->send();
+		]))->send();
 	}
 	protected function handleChatMessage(Stringable $text): void
 	{
