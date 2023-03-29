@@ -40,7 +40,7 @@ class MyWebhookHandler extends WebhookHandler
 		}
 
 		if ($text == '☕️ Кофейни') {
-			$this->chat->removeReplyKeyboard()->send();
+			$this->chat->message()->removeReplyKeyboard()->send();
 			$this->chat->replyKeyboard(ReplyKeyboard::make()->buttons([
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
@@ -63,17 +63,8 @@ class MyWebhookHandler extends WebhookHandler
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
 				ReplyButton::make('📍 1-ая Красноармейская, 15'),
-				ReplyButton::make('📍 1-ая Красноармейская, 15'),
-		 ]))->send();
+				ReplyButton::make('📍 1-ая Красноармейская, 15')
+			]))->send();
 		}
-
-		/*
-		->keyboard(Keyboard::make()->buttons([
-					Button::make('Delete')->action('delete')->param('id', '42'),
-					Button::make('open')->url('https://test.it'),
-					Button::make('Web App')->webApp('https://web-app.test.it'),
-					Button::make('Login Url')->loginUrl('https://loginUrl.test.it'),
-				]))
-			*/
 	}
 }
