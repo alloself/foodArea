@@ -24,9 +24,10 @@ class MyWebhookHandler extends WebhookHandler
 	{
 
 		switch ($text) {
-			case '⚙️ Настройки':
-				$this->chat->html("⚙️ Настройки <br> Здесь можете настроить Ваш аккаунт или посмотреть статистику покупок:")->send();
-				break;
+			case '⚙️ Настройки': {
+					$this->chat->html("Received: $text")->send();
+					break;
+				}
 		}
 	}
 }
