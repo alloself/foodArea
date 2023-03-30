@@ -50,7 +50,7 @@ class MyWebhookHandler extends WebhookHandler
 			$this->start();
 		}
 		if($text == '📍 1-ая Красноармейская, 15'){
-			$this->chat->html("📍 1-ая Красноармейская, 15\n\n🕐 Закрыто: 09:00 － 21:00")->send();
+			$this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
 		}
 	}
 }
