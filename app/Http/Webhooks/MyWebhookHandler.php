@@ -8,6 +8,7 @@ use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\Button;
 use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use DefStudio\Telegraph\Keyboard\Keyboard;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Stringable;
 
 class MyWebhookHandler extends WebhookHandler
@@ -50,7 +51,8 @@ class MyWebhookHandler extends WebhookHandler
 			$this->start();
 		}
 		if($text == '📍 1-ая Красноармейская, 15'){
-			$this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
+			$response = $this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
+			Log::alert(json_encode($response));
 		}
 	}
 }
