@@ -54,9 +54,14 @@ class MyWebhookHandler extends WebhookHandler
 			$response = $this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
 			$messageId = $response->telegraphMessageId();
 			$this->chat->location(12.345, -54.321)->reply($messageId)->keyboard(Keyboard::make()->buttons([
-				Button::make('Меню')->action('delete')->param('id', '42'),
+				Button::make('Меню')->action('openRestMenu')->param('id', '42'),
 				Button::make('Показать список кофеен')->action('delete')->param('id', '42'),
 			]))->send();
 		}
+	}
+
+	protected function openRestMenu()
+	{
+		$this->chat->message('Главное меню')->send();
 	}
 }
