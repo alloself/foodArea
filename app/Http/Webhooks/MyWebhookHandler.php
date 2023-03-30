@@ -59,9 +59,9 @@ class MyWebhookHandler extends WebhookHandler
 			]))->send();
 		}
 	}
-
-	protected function openRestMenu()
-	{
-		$this->chat->message('Главное меню')->send();
-	}
+	public function openRestMenu(){
+		//...
+		
+		$this->reply('Главное меню');
+}
 }
