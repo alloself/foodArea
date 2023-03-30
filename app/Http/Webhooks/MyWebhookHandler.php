@@ -3,6 +3,7 @@
 
 namespace App\Http\Webhooks;
 
+use DefStudio\Telegraph\DTO\InlineQueryResultPhoto;
 use \DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\Button;
@@ -60,7 +61,12 @@ class MyWebhookHandler extends WebhookHandler
 		}
 	}
 	public function openRestMenu(){
-		//...
+		$this->chat->answerInlineQuery('42', [
+			InlineQueryResultPhoto::make('42'."-light", "https://logofinder.dev/'42'/light.jpg", "https://logofinder.dev/'42'/light/thumb.jpg")
+					->caption('Light Logo'),
+			InlineQueryResultPhoto::make('42'."-dark", "https://logofinder.dev/'42'/dark.jpg", "https://logofinder.dev/'42'/dark/thumb.jpg")
+					->caption('Dark Logo'),
+	])->cache(seconds: 600)->send();
 		
 		$this->reply('Главное меню');
 }
