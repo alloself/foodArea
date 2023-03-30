@@ -52,7 +52,8 @@ class MyWebhookHandler extends WebhookHandler
 		}
 		if($text == '📍 1-ая Красноармейская, 15'){
 			$response = $this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
-			Log::alert($response->telegraphMessageId());
+			$messageId = $response->telegraphMessageId();
+			$this->chat->location(12.345, -54.321)->reply($messageId)->send();
 		}
 	}
 }
