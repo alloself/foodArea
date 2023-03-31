@@ -55,7 +55,7 @@ class MyWebhookHandler extends WebhookHandler
 			$response = $this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
 			$messageId = $response->telegraphMessageId();
 			$this->chat->location(12.345, -54.321)->reply($messageId)->keyboard(Keyboard::make()->buttons([
-				Button::make('Меню')->webApp('https://food.bustion.ru');
+				Button::make('Меню')->webApp('https://food.bustion.ru'),
 				Button::make('Показать список кофеен')->action('delete')->param('id', '42'),
 			]))->send();
 		}
