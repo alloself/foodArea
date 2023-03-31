@@ -58,22 +58,10 @@ class MyWebhookHandler extends WebhookHandler
 			$messageId = $response->telegraphMessageId();
 			$this->chat->location(12.345, -54.321)->reply($messageId)->keyboard(Keyboard::make()->buttons([
 				Button::make('Меню')->switchInlineQuery('foo')->currentChat(),
-				Button::make('Показать список кофеен')->action('delete')->webApp('https://food.bustion.ru'),
+				Button::make('Показать список кофеен')->webApp('https://food.bustion.ru'),
 			]))->send();
 		}
 	}
-	public function openRestMenu()
-	{
-		$this->chat->answerInlineQuery('42', [
-			InlineQueryResultPhoto::make('42' . "-light", "https://logofinder.dev/'42'/light.jpg", "https://logofinder.dev/'42'/light/thumb.jpg")
-				->caption('Light Logo'),
-			InlineQueryResultPhoto::make('42' . "-dark", "https://logofinder.dev/'42'/dark.jpg", "https://logofinder.dev/'42'/dark/thumb.jpg")
-				->caption('Dark Logo'),
-		])->cache(seconds: 600)->send();
-
-		$this->reply('Главное меню');
-	}
-
 
 	public function handleInlineQuery(InlineQuery $inlineQuery): void
 	{
