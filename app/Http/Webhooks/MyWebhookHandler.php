@@ -82,7 +82,7 @@ class MyWebhookHandler extends WebhookHandler
 
 
 		$this->bot->answerInlineQuery($inlineQuery->id(), [
-			InlineQueryResultArticle::make("1", "test", "test")->thumbUrl("https://vsegda-pomnim.com/uploads/posts/2022-04/1648948908_9-vsegda-pomnim-com-p-ussuriiskii-tigr-v-taige-foto-9.jpg"),
+			InlineQueryResultArticle::make("1", "test1", "test2")->description("test3")->thumbUrl("https://vsegda-pomnim.com/uploads/posts/2022-04/1648948908_9-vsegda-pomnim-com-p-ussuriiskii-tigr-v-taige-foto-9.jpg"),
 		])->send();
 	}
 }
