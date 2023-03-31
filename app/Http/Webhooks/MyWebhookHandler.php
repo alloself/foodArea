@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Stringable;
 use DefStudio\Telegraph\DTO\InlineQuery;
 use DefStudio\Telegraph\DTO\InlineQueryResultPhoto;
-use DefStudio\Telegraph\DTO\InlineQueryResultArticle
+use DefStudio\Telegraph\DTO\InlineQueryResultArticle;
 
 class MyWebhookHandler extends WebhookHandler
 {
@@ -82,7 +82,7 @@ class MyWebhookHandler extends WebhookHandler
 
 
 		$this->bot->answerInlineQuery($inlineQuery->id(), [
-			InlineQueryResultArticle::make("1" . "test","test")->thumbUrl("https://vsegda-pomnim.com/uploads/posts/2022-04/1648948908_9-vsegda-pomnim-com-p-ussuriiskii-tigr-v-taige-foto-9.jpg")->caption('Light Logo'),
+			InlineQueryResultArticle::make("1", "test", "test")->thumbUrl("https://vsegda-pomnim.com/uploads/posts/2022-04/1648948908_9-vsegda-pomnim-com-p-ussuriiskii-tigr-v-taige-foto-9.jpg"),
 		])->send();
 	}
 }
