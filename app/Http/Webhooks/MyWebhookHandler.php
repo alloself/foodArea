@@ -3,7 +3,6 @@
 
 namespace App\Http\Webhooks;
 
-use DefStudio\Telegraph\DTO\InlineQueryResultPhoto;
 use \DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\Button;
@@ -11,6 +10,8 @@ use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use DefStudio\Telegraph\Keyboard\Keyboard;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Stringable;
+use DefStudio\Telegraph\DTO\InlineQuery;
+use DefStudio\Telegraph\DTO\InlineQueryResultPhoto;
 
 class MyWebhookHandler extends WebhookHandler
 {
@@ -51,23 +52,37 @@ class MyWebhookHandler extends WebhookHandler
 		if ($text == '◀️ Назад') {
 			$this->start();
 		}
-		if($text == '📍 1-ая Красноармейская, 15'){
+		if ($text == '📍 1-ая Красноармейская, 15') {
 			$response = $this->chat->html("<a>📍 1-ая Красноармейская, 15</a>\n\n🕐 Закрыто: 09:00 － 21:00")->send();
 			$messageId = $response->telegraphMessageId();
 			$this->chat->location(12.345, -54.321)->reply($messageId)->keyboard(Keyboard::make()->buttons([
-				Button::make('Меню')->webApp('https://food.bustion.ru'),
-				Button::make('Показать список кофеен')->action('delete')->param('id', '42'),
+				Button::make('Меню')->switchInlineQuery('foo')->currentChat(),
+				Button::make('Показать список кофеен')->action('delete')->webApp('https://food.bustion.ru'),
 			]))->send();
 		}
 	}
-	public function openRestMenu(){
+	public function openRestMenu()
+	{
 		$this->chat->answerInlineQuery('42', [
-			InlineQueryResultPhoto::make('42'."-light", "https://logofinder.dev/'42'/light.jpg", "https://logofinder.dev/'42'/light/thumb.jpg")
-					->caption('Light Logo'),
-			InlineQueryResultPhoto::make('42'."-dark", "https://logofinder.dev/'42'/dark.jpg", "https://logofinder.dev/'42'/dark/thumb.jpg")
-					->caption('Dark Logo'),
-	])->cache(seconds: 600)->send();
-		
+			InlineQueryResultPhoto::make('42' . "-light", "https://logofinder.dev/'42'/light.jpg", "https://logofinder.dev/'42'/light/thumb.jpg")
+				->caption('Light Logo'),
+			InlineQueryResultPhoto::make('42' . "-dark", "https://logofinder.dev/'42'/dark.jpg", "https://logofinder.dev/'42'/dark/thumb.jpg")
+				->caption('Dark Logo'),
+		])->cache(seconds: 600)->send();
+
 		$this->reply('Главное меню');
-}
+	}
+
+
+	public function handleInlineQuery(InlineQuery $inlineQuery): void
+	{
+
+		$query = $inlineQuery->query(); // "pest logo"
+
+
+		$this->bot->answerInlineQuery($inlineQuery->id(), [
+			InlineQueryResultPhoto::make("1" . "-light", "https://vsegda-pomnim.com/uploads/posts/2022-04/1648948908_9-vsegda-pomnim-com-p-ussuriiskii-tigr-v-taige-foto-9.jpg", "https://vsegda-pomnim.com/uploads/posts/2022-04/1648948908_9-vsegda-pomnim-com-p-ussuriiskii-tigr-v-taige-foto-9.jpg")
+				->caption('Light Logo'),
+		])->send();
+	}
 }
